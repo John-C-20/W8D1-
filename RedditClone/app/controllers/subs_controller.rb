@@ -14,7 +14,7 @@ class SubsController < ApplicationController
 
   def create
     @sub = Sub.new(sub_params)
-    @sub.user_id = current_user.id
+    @sub.user_id = current_user.id 
 
     if @sub.save
       redirect_to sub_url(@sub)
@@ -30,8 +30,8 @@ class SubsController < ApplicationController
   end
 
   def update
-    @sub = Sub.update(sub_params)
-    if @sub.save
+    @sub = Sub.find_by_id(params[:id])
+    if @sub.update(sub_params)
       redirect_to sub_url(@sub)
     else
       flash.now[:errors] = @sub.errors.full_messages

@@ -1,6 +1,6 @@
 class SubsController < ApplicationController
 
-  before_action : :ensure_mod, only: [:update, :edit]
+  before_action :ensure_mod, only: [:update, :edit]
 
   def ensure_mod
     @sub = Sub.find_by_id(params[:id])
